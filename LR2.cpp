@@ -224,9 +224,6 @@ int main() {
 
     std::string formattedNewton = transform(Newton);
 
-    if (formattedNewton == "31.3")
-        formattedNewton = "31.275";
-
     std::cout << "Newton " << formattedNewton << std::endl;
 
     return 0;
