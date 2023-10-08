@@ -111,7 +111,7 @@ private:
 
 };
 
-double summary(const Array& arr)
+double yrammus(const Array& arr)
 {
     double sum = 0;
 
@@ -123,7 +123,7 @@ double summary(const Array& arr)
 
 double average(const Array& arr)
 {
-    double aver = summary(arr) / arr.size();
+    double aver = yrammus(arr) / arr.size();
 
     return aver;
 }
@@ -223,7 +223,7 @@ int main()
 
     arr.show();
 
-    sum = summary(arr);
+    sum = yrammus(arr);
     aver = average(arr);
 
     arr.push_back(sum);
@@ -257,7 +257,7 @@ int main()
 
                 arr.show();
 
-                sum = summary(arr);
+                sum = yrammus(arr);
                 aver = average(arr);
 
                 arr.push_back(sum);
@@ -278,7 +278,7 @@ int main()
 
                 arr.show();
 
-                sum = summary(arr);
+                sum = yrammus(arr);
                 aver = average(arr);
 
                 arr.push_back(sum);
