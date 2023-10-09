@@ -11,7 +11,7 @@ public:
     using Iterator = value_t*;
 
     Integral(const std::vector<double>& val, const std::vector<double>& elem)
-        : funcval(val), arrayelem(elem) {
+        : funcval(val), arrayelemNew(elem) {
         n = val.size() - 1; // Number of subintervals
         step = elem[n] - elem[0]; // Width of the interval
     }
@@ -34,7 +34,7 @@ public:
         double integral = 0;
 
         for (int i = 0; i < n; ++i)
-            integral += funcval[i] * (arrayelem[i + 1] - arrayelem[i]);
+            integral += funcval[i] * (arrayelemNew[i + 1] - arrayelemNew[i]);
 
         return integral;
     }
@@ -47,7 +47,7 @@ public:
         {
             double help = (funcval[i] + funcval[i + 1]) / 2.0;
 
-            integral += help * (arrayelem[i + 1] - arrayelem[i]);
+            integral += help * (arrayelemNew[i + 1] - arrayelemNew[i]);
         }
 
         return integral;
@@ -58,7 +58,7 @@ public:
         double integral = 0;
 
         for (int i = 0; i < n; ++i)
-            integral += funcval[i + 1] * (arrayelem[i + 1] - arrayelem[i]);
+            integral += funcval[i + 1] * (arrayelemNew[i + 1] - arrayelemNew[i]);
 
         return integral;
     }
@@ -68,7 +68,7 @@ public:
         double integral = 0;
 
         for (int i = 0; i < n; ++i)
-            integral += (funcval[i] + funcval[i + 1]) * (arrayelem[i + 1] - arrayelem[i]) / 2;
+            integral += (funcval[i] + funcval[i + 1]) * (arrayelemNew[i + 1] - arrayelemNew[i]) / 2;
         return integral;
     }
 
@@ -78,7 +78,7 @@ public:
 
         for (int i = 0; i < n; i += 2) 
         {
-            double step = arrayelem[i + 2] - arrayelem[i];
+            double step = arrayelemNew[i + 2] - arrayelemNew[i];
 
             integral += (funcval[i] + 4 * funcval[i + 1] + funcval[i + 2]) * step / 6;
         }
@@ -92,7 +92,7 @@ public:
         if (n % 3 == 0) 
         {
             for (int i = 0; i < n; i += 3) 
-                integral += (funcval[i] + 3 * funcval[i + 1] + 3 * funcval[i + 2] + funcval[i + 3]) *(arrayelem[i + 3] - arrayelem[i]) / 8;
+                integral += (funcval[i] + 3 * funcval[i + 1] + 3 * funcval[i + 2] + funcval[i + 3]) *(arrayelemNew[i + 3] - arrayelemNew[i]) / 8;
         }
         return integral;
     }
@@ -100,8 +100,8 @@ public:
     void disp() {
         std::cout << "input= argument ";
 
-        for (int i = 0; i < arrayelem.size(); ++i)
-            std::cout << arrayelem[i] << " ";
+        for (int i = 0; i < arrayelemNew.size(); ++i)
+            std::cout << arrayelemNew[i] << " ";
 
         std::cout << '\n';
 
@@ -139,7 +139,7 @@ private:
     int n;
     std::vector<double> funcval;
 
-    std::vector<double> arrayelem;
+    std::vector<double> arrayelemNew;
 
 
     double helpfunc(double x) 
